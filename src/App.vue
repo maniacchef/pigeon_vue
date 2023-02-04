@@ -1,26 +1,34 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+export default{
+  components:{
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  },
+  created(){
+    this.$store.dispatch("getAllAttrs")
+    this.$store.dispatch("getAllCategories")
+    this.$store.dispatch("getAllTags")
   }
 }
 </script>
+<template>
+  <header>
+    <div class="wrapper">
+    <nav class="menu">
+      <router-link to="/">トップ</router-link> |
+      <router-link to="/regist">登録実例</router-link> |
+      <router-link to="/list">一覧実例</router-link>
+    </nav>
+    </div>
+  </header>
+  <main>
+  <article>
+      <router-view/>
+  </article>
+  </main>
+</template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "./css/destyle.css";
+@import "./css/style.css";
+
 </style>
