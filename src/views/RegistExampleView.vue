@@ -9,7 +9,10 @@
 		<!-- vue移行に伴いMVCモデルを使わなくなったため不要な処理となった -->
 		<!-- 新人研修向けにコメント化して残しておきます -->
 		<!-- <form action="servlet/FrontController" method="POST" id="chkForm"></form> -->
-		<form id="chkForm">
+		<!-- prevent この設定をすると、submit押下時、各フォームにあらかじめ付いている入力チェック（例：required）を -->
+		<!-- 実施した後、問題なければ割りあてられたメソッド（今回の場合check）を呼び出す。 -->
+		<!-- 画面遷移もjs側で管理するため、action属性は消してます -->
+		<form id="chkForm" v-on:submit.prevent="check">
 			<input type="hidden" name="BUTTON_ID" value="101_01_01">
 			<fieldset>
 				<p><label>text：</label>
@@ -76,7 +79,7 @@
 				</p>
 
 				<p><label>submit：</label>
-					<button v-on:click="check">送信</button>
+					<button type="submit">送信</button>
 					<!-- {{ }}の表記方法は、マスタッシュ構文と言う -->
 					{{ msghoge }}
 				</p>
@@ -89,7 +92,7 @@
 	</section>
 	<section>
 		<h3>inputタグ 属性 実例</h3>
-		<form name="mainform02">
+		<form name="mainform02" v-on:submit.prevent="gotoTop">
 			<fieldset>
 				<p>
 				<label>readonly：</label>
@@ -132,7 +135,7 @@
 
 	<section>
 		<h3>その他フォーム関連タグ 実例</h3>
-		<form name="mainform03">
+		<form name="mainform03" v-on:submit.prevent="gotoTop">
 			<fieldset>
 
 				<!-- optionタグにvalue属性を指定すると、要素内容(例：天下一品)とは別の値を送信することが可能 -->
@@ -168,7 +171,7 @@ export default {
   props: {
     msghoge:{
 		type:String,
-		default:'abc'
+		default:'abcde'
 	}
   },
   //とりあえずここに実装。コンポーネント化する場合は、componentフォルダへの切り出しが良いと思われる
@@ -204,10 +207,13 @@ export default {
 
 			var targetDiv = document.getElementById("input-warning-list");
 			targetDiv.innerHTML = message;
-			if (message != "") {
+			/*if (message != "") {
 				return false;
-			}
-			this.$router.push({ path: 'list' })
+			}*/
+			this.$router.push({ name: "home" });
+		},
+		gotoTop(){
+			this.$router.push({ name: "home" });
 		}
 	},
 	//算出プロパティと呼ばれる関数を定義する場所。computedは、dataプロパティと同様にデータの変化を画面に即時反映するが、
