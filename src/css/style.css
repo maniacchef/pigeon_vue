@@ -1,64 +1,3 @@
-@charset "UTF-8"; /* 文字セット 必ず1行目に書く*/
-@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css); /* Notoフォント用 */
-/*
-Notoを仕事で使う際は、フォントのダウンロードに時間がかかるため、パフォーマンスに影響する。以下で対策する。
-https://pecopla.net/web-column/weight-saving-webfont
-*/
-
-/* html全体 */
-body{
-	font-family: "Helvetica Neue",
-    Arial,
-    "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans",
-    Meiryo,
-    sans-serif;
-	max-width:		1400px;
-	margin-left:	auto;
-	margin-right:	auto;
-}
-
-h1,h3{
-	color:	teal;
-}
-
-/*ヘッダー（グローバルメニュー）*/
-ul{
-	list-style-type:none;
-}
-
-nav ul, nav li{
-	margin:	0 auto;
-	padding:0;
-}
-
-nav li{
-	display:			block;
-	background-color:	#ddeeee;
-}
-
-nav a{
-	text-decoration:none;
-	color:			black;
-}
-  
-nav a.router-link-exact-active {
-color: #42b983;
-}
-
-nav a:hover{
-	color:gray;
-}
-
-/* メインコンテンツ */
-article .wrapper{
-	margin:0 auto;		/* 縦にmargin0設定、左右は自動指定 */
-}
-
-article section{
-  margin:0 auto;
-}
-
 /* トップページ用 */
 article #top img{
   display:	block;			/* imgタグはインライン要素。marginを適用する為、ブロック要素に変換 */
@@ -67,109 +6,6 @@ article #top img{
 
 article #top figcaption{
 	text-align:center;
-}
-
-/* テーブル(divタグを利用して疑似的にtableタグを模倣した実装) */
-article .wrapper .table-type1{
-	width: 		100%;
-	border-top: 1px solid #cccccc;
-	border-left:1px solid #cccccc;
-}
-
-article .wrapper .table-type1 .tr{
-	display:table;
-	width:	100%;
-}
-
-article .wrapper .table-type1 .tr .th,
-article .wrapper .table-type1 .tr .td{
-	display: 		table-cell;
-	background: 	#ffffff;
-	border-right:	1px solid #cccccc;
-	border-bottom:	1px solid #cccccc;
-}
-
-article .wrapper .table-type1 .tr .th{
-	background: #777777;
-	color :		white;
-}
-
-#table-top-spec{
-	margin:auto;
-}
-
-/* テーブル(tableタグを利用した実装) */
-.table-overflow{
-	overflow:auto;
-	/*white-space:nowrap;*/
-}
-
-table{
-	border-width:		1px;
-	width:				100%;
-	border-collapse:	collapse;	/* これを指定しないと枠線が二重に出る */
-	border-spacing:		0;			/* これを指定しないと枠線が二重に出る */
-	table-layout: 		fixed;		/* これを指定しないと、tableの幅が表示するコンテンツの長さに影響される */
-}
-th {
-	border-width:	1px;
-	background:		#777777;
-	color:			white;
-	border-color:	#444444;
-	text-align:		center;
-	font-weight:	normal;
-}
-
-td {
-	border-width:	1px;
-	border-color:	gray;
-}
-
-tr:nth-child(odd){
-	background:#dddddd;
-}
-
-/* フォーム */
-article section #input-warning-list{
-  margin:0 auto;
-}
-
-form{
-	background:#ddeeee;
-}
-
-form label{
-	display:inline-block;
-}
-
-/* フォームのinputタグについて、cssリセットをかけるとデザインが大きく変わる（例：背景が白でなくなる） */
-/* cssリセットをかける場合、フォームのinputタグのtypeの各属性について、デザインを自前で用意する必要がある。 */
-form input[type="text"],[type="password"],[type="tel"],[type="number"],[type="email"],[type="date"],[type="month"],
-select{
-	background:		white;
-	border-width:	1px;
-}
-form input[type="button"],[type="reset"],[type="submit"]{
-	background:		#EEEEEE;
-	border-width:	1px;
-	color:			#444444;
-}
-
-/* fieldsetタグを使う場合は、borderを消さないと枠線が表示される（chromeは再現。eclipse標準ブラウザでは再現せず） */
-fieldset{
-  border:none;
-}
-
-input[readonly]{
-	color:gray;
-}
-
-/*<input type="text" readonly value="u cant write here" style="width:220px;color:gray;">*/
-
-/*リセットcssを指定すると、selectbox指定時に右端に表示される上向き矢印が消えるため、上向き矢印の表示を改めて指定する*/
-form select{
-  -moz-appearance: 		menulist;
-  -webkit-appearance:	menulist;
 }
 
 /* フッター */
@@ -206,39 +42,6 @@ footer p{
 
 /* スマートフォン用設定 */
 @media screen and (max-width:600px){
-	h1{
-		margin-bottom:	3vw;
-		font-size:		6vw;
-	}
-
-	h3{
-		margin-bottom:	3vw;
-		font-size:		5vw;
-	}
-
-	/*ヘッダー（グローバルメニュー）*/
-	header .wrapper{
-	  margin-top:	20px;
-	  margin-bottom:30px;
-	}
-
-	nav a{
-		display:block;
-	}
-
-	nav li{
-		margin-bottom:	5px;
-		padding:		10px 15px;
-		border-radius:	5px;
-		max-width:		90vw;
-		/*border-width:1px; デバッグ */
-	}
-
-	/* 画面の最大幅 */
-	article .wrapper{
-	  max-width:96vw;
-	}
-
 	/* メインコンテンツ */
 	article section{
 	  margin-bottom:15vw;
@@ -253,108 +56,31 @@ footer p{
 		font-size:4vw;
 	}
 
-	/* テーブル(divタグを利用して疑似的にtableタグを模倣した実装) */
-	article .wrapper .table-type1 .tr .th,
-	article .wrapper .table-type1 .tr .td{
-		padding:8px 5px;
-	}
+  /* テーブル(divタグを利用して疑似的にtableタグを模倣した実装) */
+  article .wrapper .table-type1 .tr .th,
+  article .wrapper .table-type1 .tr .td{
+	  padding:8px 5px;
+  }
 
-	#table-top-spec{
-		max-width:88vw;		/* 画面の最大幅 */
-	}
+  #table-top-spec{
+	  max-width:88vw;		/* 画面の最大幅 */
+  }
 
-	article #table-top-spec .th{
-		width:		40%;
-		font-size:	4vw;
-	}
+  article #table-top-spec .th{
+	  width:		40%;
+	  font-size:	4vw;
+  }
 
-	/* テーブル(tableタグを利用した実装) */
-	th {
-		padding:	1vw;
-		font-size:	4vw;
-	}
+  /* テーブル(tableタグを利用した実装) */
+  th {
+	  padding:	1vw;
+	  font-size:	4vw;
+  }
 
-	td {
-		padding:	1vw;
-		font-size:	4vw;
-	}
-
-	/* htmlタグ一覧用 */
-	th#tag-name{
-		width:		80px;
-	}
-
-	th#taglist-category{
-		width:		120px;
-	}
-
-	th#taglist-attr{
-		width:		120px;
-	}
-
-	th#taglist-desc{
-		width:		130px;
-	}
-
-	/* フォーム */
-	article section #input-warning-list{
-		margin-bottom:2vw;
-	}
-
-	form{
-		padding-bottom:5vw;
-	}
-
-	form p{
-		margin-top:	5vw;
-		margin-left:5vw;
-	}
-
-	form label{
-		width:			30vw;
-		margin-bottom:	2vw;
-		font-size:		4.5vw;
-	}
-
-	form input[type="text"],[type="password"],[type="tel"],[type="number"],[type="email"],[type="date"],[type="month"],
-	select{
-		padding:	1.7vw 2vw 2vw 2vw;
-		line-height:1.7; /* これを指定しないと、ベースラインより下の文字が欠ける（例：g） */
-		border-radius:	2vw;
-	}
-
-	form input[type="text"],[type="number"]{
-		margin-right:1vw;
-	}
-
-	form input[type="button"],[type="reset"],[type="submit"]{
-		padding:	1.7vw 2.5vw;
-		border-radius:	2vw;
-	}
-
-	form input[type="text"],[type="password"],[type="tel"]{
-		width:50vw;
-	}
-
-	form input[type="date"],[type="month"]{
-		width:40vw;
-	}
-
-	form input[type="number"]{
-		width:15vw;
-	}
-
-	form input[type="checkbox"],[type="radio"]{
-		margin:0 1vw 0 1vw;
-	}
-
-	form #placeholder input{
-		width:16vw;
-	}
-
-	form #required input{
-		width:25vw;
-	}
+  td {
+	  padding:	1vw;
+	  font-size:	4vw;
+  }
 
 	/* フッター */
 	footer{
@@ -373,58 +99,7 @@ footer p{
 
 /* PC用設定 */
 @media screen and (min-width:601px){
-
-	h1{
-		margin-bottom:	2vw;
-		font-size:		1.6vw;
-	}
-
-	h3{
-		margin-bottom:	1vw;
-		font-size:		1.2vw;
-	}
-
-	/*ヘッダー（グローバルメニュー）*/
-	.menu{
-		text-align: 	center;
-		display:block !important;
-	}
-
-	header .wrapper{
-		margin-top:		20px;
-		margin-bottom:	40px;
-	}
-
-	nav ul{
-		display:		flex;	/* メニューを横に並べる */
-		justify-content:center;
-	}
-
-	nav li{
-		margin:			0 5px;
-		padding:		10px 15px;
-		border-radius:	5px;
-		/*border-width:1px; デバッグ */
-	}
-
-	/*.menubtn{
-		display:none;
-	}*/
-
-	article .wrapper{
-		max-width:60vw;		/* 画面の最大幅 */
-	}
-
-	/* 幅640pxのページ用 */
-	article .w640{
-		max-width:40vw;		/* 画面の最大幅 */
-	}
-
 	/* メインコンテンツ */
-	article section{
-		margin-bottom:3vw;
-	}
-
 	article #top h1{
 		padding-left: 15%;
 	}
@@ -463,102 +138,6 @@ footer p{
 	td {
 		padding:		0.2vw;
 	}
-
-	/* カテゴリ一覧用 */
-	th#category-name{
-		width:			20%;
-	}
-
-	th category-name{
-		width:			20%;
-	}
-
-	/* グローバル属性一覧用 */
-	th#attr-name{
-		width:			20%;
-	}
-
-	/* htmlタグ一覧用 */
-	th#tag-name{
-		width:			12%;
-	}
-
-	th#taglist-category{
-		width:			18%;
-	}
-
-	th#taglist-attr{
-		width:			35%;
-	}
-
-	/* フォーム */
-	article section #input-warning-list{
-		margin-bottom:1vw;
-	}
-
-	form{
-		border-radius:	0.2vw;
-		padding-bottom:	1vw;
-	}
-
-	form p{
-		margin-top:	1.5vw;
-		margin-left:1vw;
-	}
-
-	form label{
-		width:110px;
-	}
-
-	form input[type="text"],[type="password"],[type="tel"],[type="number"],[type="email"],[type="date"],[type="month"],
-	select{
-		padding:		0.4vw;
-		line-height:	1.4; /* これを指定しないと、ベースラインより下の文字が欠ける（例：g） */
-		border-radius:	0.2vw;
-	}
-
-	form input[type="text"],[type="number"]{
-		margin-right:0.2vw;
-	}
-
-	form input[type="button"],[type="reset"],[type="submit"]{
-		padding:		0.4vw 0.8vw;
-		line-height:	1.4; /* これを指定しないと、ベースラインより下の文字が欠ける（例：g） */
-		border-radius:	0.3vw;
-	}
-
-	form input[type="text"],[type="password"],[type="tel"]{
-		width:12vw;
-	}
-
-	form input[type="tel"]{
-		width:10vw;
-	}
-
-	form input[type="date"],[type="month"]{
-		width:8vw;
-	}
-
-	form input[type="number"]{
-		width:4vw;
-	}
-
-	form input[type="email"]{
-		width:14vw;
-	}
-
-	form input[type="checkbox"],[type="radio"]{
-		margin:0 0.3vw 0 1vw;
-	}
-
-	form #maxlength input, form #placeholder input{
-		width:4vw;
-	}
-
-	form #required input{
-		width:5vw;
-	}
-
 	/* フッター */
 	footer{
 		margin-bottom:3vw;
